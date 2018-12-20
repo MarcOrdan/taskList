@@ -12,7 +12,9 @@ function loadEventListeners() {
     //ADD TASK EVENT
     form.addEventListener('submit', addTask);
     //REMOVE TASK EVENT
-    taskList.addEventListener('click',removeTask);
+    taskList.addEventListener('click', removeTask);
+    //CLEAR TASKS EVENT
+    clearBtn.addEventListener('click', clearTasks)
 
 }
 
@@ -50,7 +52,7 @@ function addTask(e) {
 
     e.preventDefault();
 }
-
+//REMOVE TASK
 function removeTask(e){
     if (e.target.parentElement.classList.contains('delete-item')) {
         if(confirm('Are you sure?')){
@@ -58,4 +60,13 @@ function removeTask(e){
         }
      
     }
-}   
+}
+//CLEAR TASKS
+function clearTasks(){
+   //taskList.innerHTML ='';
+
+   //faster code
+   while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+   }
+}
